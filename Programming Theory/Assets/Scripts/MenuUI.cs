@@ -8,6 +8,7 @@ using UnityEngine;
 
 #endif
 
+[DefaultExecutionOrder(1000)]
 public class MenuUI : MonoBehaviour
 {
     public void Exit()
@@ -17,5 +18,10 @@ public class MenuUI : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ChangeName(string newname)
+    {
+        MainManager.Instance.CharacterName = newname;
     }
 }

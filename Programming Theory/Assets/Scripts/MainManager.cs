@@ -5,7 +5,15 @@ using UnityEngine;
 public class MainManager : MonoBehaviour
 {
     // Start is called before the first frame update\
-    public MainManager Instance { get; private set; } = null;
+    public static MainManager Instance { get; private set; } = null;
+
+    private string characterName;
+
+    public string CharacterName
+    {
+        get { return characterName; }
+        set { characterName = value; }
+    }
 
     private void Awake()
     {
