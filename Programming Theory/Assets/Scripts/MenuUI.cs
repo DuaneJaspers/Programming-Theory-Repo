@@ -27,6 +27,6 @@ public class MenuUI : MonoBehaviour
 
     public void StartGame(string shape)
     {
-        Debug.Log("Shape");
+        Debug.Log(shape);
     }
 }
