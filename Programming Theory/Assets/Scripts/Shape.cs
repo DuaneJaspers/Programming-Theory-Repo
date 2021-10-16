@@ -10,6 +10,7 @@ public abstract class Shape : MonoBehaviour
     public float Speed = 3;
 
     protected NavMeshAgent m_Agent;
+    protected abstract string Name { get; }
 
     protected void Awake()
     {
@@ -19,12 +20,22 @@ public abstract class Shape : MonoBehaviour
         m_Agent.angularSpeed = 999;
     }
 
-    protected abstract void SayName();
+    protected abstract void SayMovementText();
 
-    // Abstration
+    public abstract void SaySelectedText();
+
+    // Abstraction
+
+    protected void SayDialog(string dialog)
+    {
+        string newtext = $"<{Name}> : {dialog}";
+        MainUI.Instance.AddText(newtext);
+    }
+
+    // Abstraction
     internal void GoTo(Vector3 position)
     {
-        SayName();
+        SayMovementText();
         m_Agent.SetDestination(position);
         m_Agent.isStopped = false;
     }

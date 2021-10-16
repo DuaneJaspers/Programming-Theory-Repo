@@ -13,10 +13,26 @@ public class UserControl : MonoBehaviour
     public Camera GameCamera;
     public float PanSpeed = 10.0f;
 
-    public Shape m_Player = null;
+    private Shape m_Player = null;
 
     public void Start()
     {
+    }
+
+    public void HandleSelection()
+    {
+        var ray = GameCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            //the collider could be children of the unit, so we make sure to check in the parent
+            var unit = hit.collider.GetComponentInParent<Shape>();
+            m_Player = unit;
+            if (m_Player != null)
+            {
+                m_Player.SaySelectedText();
+            }
+        }
     }
 
     public void HandleAction()
@@ -35,7 +51,10 @@ public class UserControl : MonoBehaviour
     {
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         GameCamera.transform.position = GameCamera.transform.position + new Vector3(move.x, 0, move.y) * PanSpeed * Time.deltaTime;
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleSelection();
+        }
         if (m_Player != null && Input.GetMouseButtonDown(1))
         {//right click give order to the unit
             HandleAction();

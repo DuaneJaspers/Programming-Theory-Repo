@@ -7,7 +7,7 @@ public class MainManager : MonoBehaviour
     // Encapsulation
     public static MainManager Instance { get; private set; } = null;
 
-    private string characterName;
+    private string characterName = "Perry";
 
     // Encapsulation
     public string CharacterName

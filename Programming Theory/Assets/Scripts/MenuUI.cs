@@ -5,6 +5,7 @@ using UnityEditor;
 #if UNITY_EDITOR
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 #endif
 
@@ -25,8 +26,8 @@ public class MenuUI : MonoBehaviour
         MainManager.Instance.CharacterName = newname;
     }
 
-    public void StartGame(string shape)
+    public void StartGame()
     {
-        Debug.Log(shape);
+        SceneManager.LoadScene(1);
     }
 }
