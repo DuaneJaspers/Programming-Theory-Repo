@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    // Start is called before the first frame update\
+    // Encapsulation
     public static MainManager Instance { get; private set; } = null;
 
-    private string characterName;
+    private string characterName = "Perry";
 
+    // Encapsulation
     public string CharacterName
     {
         get { return characterName; }
