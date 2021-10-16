@@ -24,4 +24,9 @@ public class MenuUI : MonoBehaviour
     {
         MainManager.Instance.CharacterName = newname;
     }
+
+    public void StartGame(string shape)
+    {
+        Debug.Log("Shape");
+    }
 }
